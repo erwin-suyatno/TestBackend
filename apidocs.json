@@ -1,0 +1,217 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "API Book",
+        "description": "Daftar API Book",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "localhost"
+        }
+    ],
+    "tags": [
+        {
+            "name": "BOOK",
+            "description": " list of books"
+        },
+        {
+            "name": "MEMBER",
+            "description": " list of members"
+        },
+        {
+            "name": "TRANSACTION",
+            "description": " list of transaction"
+        }
+    ],
+    "paths":{
+        "/books":{
+            "get":{
+                "tags": [
+                    "BOOK"
+                ],
+                "sumarry":"Get All Book",
+                "description":"All list of books",
+                "responses": {
+                    "200":{
+                        "description":"Success"
+                    }
+                }
+            }
+        },
+        "/books/add":{
+            "post":{
+                "tags":[
+                    "BOOK"
+                ],
+                "sumarry":"Post Book",
+                "consumes":"multipart/form-data",
+                "requestBody":{
+                    "content":{
+                        "multipart/form-data":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "code":{
+                                        "type":"string"
+                                    },
+                                    "title":{
+                                        "type":"string"
+                                    },
+                                    "author":{
+                                        "type":"string"
+                                    },
+                                    "stock":{
+                                        "type":"integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description":"Success"
+                    }
+                }
+            }
+        },
+        "/members":{
+            "get":{
+                "tags": [
+                    "MEMBER"
+                ],
+                "sumarry":"Get All member",
+                "description":"All list of members",
+                "responses": {
+                    "200":{
+                        "description":"Success"
+                    }
+                }
+            }
+        },
+        "/members/add":{
+            "post":{
+                "tags":[
+                    "MEMBER"
+                ],
+                "sumarry":"Post Member",
+                "consumes":"multipart/form-data",
+                "requestBody":{
+                    "content":{
+                        "multipart/form-data":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "code":{
+                                        "type":"string"
+                                    },
+                                    "name":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description":"Success"
+                    }
+                }
+            }
+        },
+        "/transactions":{
+            "get":{
+                "tags": [
+                    "TRANSACTION"
+                ],
+                "sumarry":"Get All TRANSACTION",
+                "description":"All list of TRANSACTION",
+                "responses": {
+                    "200":{
+                        "description":"Success"
+                    }
+                }
+            }
+        },
+        "/transactions/add":{
+            "post":{
+                "tags":[
+                    "TRANSACTION"
+                ],
+                "sumarry":"Post TRANSACTION",
+                "consumes":"multipart/form-data",
+                "requestBody":{
+                    "content":{
+                        "multipart/form-data":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "dateBorrow":{
+                                        "type":"string"
+                                    },
+                                    "dateBack":{
+                                        "type":"string"
+                                    },
+                                    "bookCode":{
+                                        "type":"string"
+                                    },
+                                    "memberCode":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description":"Success"
+                    }
+                }
+            }
+        },
+        "/transactions/update/:id":{
+            "put":{
+                "tags":[
+                    "TRANSACTION"
+                ],
+                "sumarry":"Update TRANSACTION",
+                "consumes":"multipart/form-data",
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "description":"Id transaksi"
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "multipart/form-data":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "dateBack":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description":"Success"
+                    }
+                }
+            }
+
+        }
+
+    }
+}
